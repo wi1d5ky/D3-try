@@ -2,31 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>D3.js</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./graph.js"></script>
+    <title>D3 playground</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        ul {
+            padding: ;
+            list-style-type: none;
+        }
+        ul li {
+            font-size: 1.25em;
+            line-height: 1.5em;
+        }
+        ul li:before {
+            content: '> ';
+            color: #00f;
+        }
+        ul li a {
+            color: #00f;
+        }
+    </style>
 </head>
 <body>
-    <h1>Playground for d3.js</h1>
-    <p>This is a playground for d3.js</p>
-
-    <div id="val">
-        <label for="num1">Num1: </label>
-        <input type="range" id="num1" min="0" max="200" class="num" />
-        <label for="num2">Num2: </label>
-        <input type="range" id="num2" min="0" max="200" class="num" />
-        <label for="num3">Num3: </label>
-        <input type="range" id="num3" min="0" max="200" class="num" />
-        <label for="num4">Num4: </label>
-        <input type="range" id="num4" min="0" max="200" class="num" />
-        <label for="num5">Num5: </label>
-        <input type="range" id="num5" min="0" max="200" class="num" />
-        <button onclick="javascript:cal()" class="btn">try it!</button>
-    </div>
-
-    <div class="wrapper">
-        <svg></svg>
-    </div>
+    <h1>D3 playground</h1>
+    <ul>
+        <li><a href="./hello">hello</a></li>
+        <li><a href="./barchart">bar chart</a></li>
+    </ul>
 </body>
 </html>
