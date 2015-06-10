@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D3.js</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        .wrapper svg {
+            border: 1px solid #343434;
+            width: 500px;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Playground for d3.js</h1>
+    <p>This is a playground for d3.js</p>
+    <div class="wrapper"></div>
+</body>
+</html>
+
+<script>
+    var data = [100, 200, 300, 400, 300, 200, 100, 200, 300, 400, 300, 200, 100];
+
+    /* the size of the graph*/
+    var height = Math.max(...data) + 50;
+    var width = 500;
+
+    /* the width of each bar */
+    var columnSpan = width / (data.length * 2 + 1);
+
+    var svg = d3.select('.wrapper').append("svg").append('g')
+        .attr('height', 400)
+        .attr('width', 500)
+        .attr('fill', 'grey');
+
+    svg.selectAll('rect').data(data).enter().append('rect')
+        .attr('fill','#00cc00')
+        .attr('height', function(value, index) {return value;})
+        .attr('width', columnSpan)
+        .attr('x', function(value, index) {return index * columnSpan * 2 + columnSpan;})
+        .attr('y', function(value) {return height - value;});
+
+</script>
