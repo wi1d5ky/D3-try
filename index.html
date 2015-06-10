@@ -8,40 +8,96 @@
         body {
             background-color: #fff;
         }
+
         .wrapper svg {
-            border: 1px solid #343434;
+            display: block;
+            height: auto;
             width: 500px;
-            height: 450px;
+            border: 1px solid #343434;
         }
+
+        .wrapper svg g {
+            display: block;
+        }
+
+        #val {
+            display: inline-block;
+            margin-bottom: 1em;
+            padding: 1em;
+            width: auto;
+            border: 1px solid #343434;
+        }
+
+        #val .num {
+            margin: .5em 0;
+            display: inline-block;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: .5em;
+            border: 1px solid #343434;
+        }
+
     </style>
 </head>
 <body>
     <h1>Playground for d3.js</h1>
     <p>This is a playground for d3.js</p>
-    <div class="wrapper"></div>
+
+    <div id="val">
+        <label for="num1">Num1: </label>
+        <input type="number" name="num1" min="0" max="500" class="num" />
+        <label for="num2">Num2: </label>
+        <input type="number" name="num2" min="0" max="500" class="num" />
+        <label for="num3">Num3: </label>
+        <input type="number" name="num3" min="0" max="500" class="num" />
+        <label for="num4">Num4: </label>
+        <input type="number" name="num4" min="0" max="500" class="num" />
+        <label for="num5">Num5: </label>
+        <input type="number" name="num5" min="0" max="500" class="num" />
+        <a href="javascript:cal()" class="btn">
+            <button>try it!</button>
+        </a>
+    </div>
+
+    <div class="wrapper">
+        <svg></svg>
+    </div>
 </body>
 </html>
 
 <script>
-    var data = [100, 200, 300, 400, 300, 200, 100, 200, 300, 400, 300, 200, 100];
+    function cal()
+    {
+        var array = document.getElementsByClassName('num');
+        var data=[];
 
-    /* the size of the graph*/
-    var height = Math.max(...data) + 50;
-    var width = 500;
+        for (var i = 0; i < array.length; i++) {
+            data[i] = Number(array[i].value);
+        }
 
-    /* the width of each bar */
-    var columnSpan = width / (data.length * 2 + 1);
+        /* the size of the graph*/
+        var height = Math.max(...data) + 50;
+        var width = 500;
 
-    var svg = d3.select('.wrapper').append("svg").append('g')
-        .attr('height', 400)
-        .attr('width', 500)
-        .attr('fill', 'grey');
+        /* the width of each bar */
+        var columnSpan = width / (data.length * 2 + 1);
 
-    svg.selectAll('rect').data(data).enter().append('rect')
-        .attr('fill','#00cc00')
-        .attr('height', function(value, index) {return value;})
-        .attr('width', columnSpan)
-        .attr('x', function(value, index) {return index * columnSpan * 2 + columnSpan;})
-        .attr('y', function(value) {return height - value;});
+        d3.select('.wrapper').select("svg").html("");
 
+        var svg = d3.select('.wrapper').select("svg").append('g')
+            .attr('height', height)
+            .attr('width', 500)
+            .attr('fill', 'grey');
+
+        svg.selectAll('rect').data(data).enter().append('rect')
+            .attr('fill','#00cc00')
+            .attr('height', function(value, index) {return value;})
+            .attr('width', columnSpan)
+            .attr('x', function(value, index) {return index * columnSpan * 2 + columnSpan;})
+            .attr('y', function(value) {return height - value;});
+
+        d3.select('.wrapper > svg').attr('height', height);
+    }
 </script>
