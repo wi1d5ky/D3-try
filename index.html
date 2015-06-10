@@ -56,9 +56,7 @@
         <input type="number" name="num4" min="0" max="500" class="num" />
         <label for="num5">Num5: </label>
         <input type="number" name="num5" min="0" max="500" class="num" />
-        <a href="javascript:cal()" class="btn">
-            <button>try it!</button>
-        </a>
+        <button onclick="javascript:cal()" class="btn">try it!</button>
     </div>
 
     <div class="wrapper">
@@ -68,6 +66,16 @@
 </html>
 
 <script>
+
+    function Max(a)
+    {
+        var max=0;
+        for (var i = 0; i < a.length; i++) {
+            if(a[i]>max) max=a[i];
+        }
+        return max;
+    }
+
     function cal()
     {
         var array = document.getElementsByClassName('num');
@@ -78,7 +86,7 @@
         }
 
         /* the size of the graph*/
-        var height = Math.max(...data) + 50;
+        var height = Max(data) + 50;
         var width = 500;
 
         /* the width of each bar */
