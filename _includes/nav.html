@@ -1,0 +1,10 @@
+<nav>
+	<ul id="navigation">
+        {% assign pages = site.pages | sort:"order" %}
+        {% for i in pages %}
+        <li>
+            <a href="{{ site.baseurl }}/{{ i.path }}">{{ i.title }}</a>
+        </li>
+        {% endfor%}
+	</ul>
+</nav>

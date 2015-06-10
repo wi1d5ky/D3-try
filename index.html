@@ -1,3 +1,8 @@
+---
+title: Home
+order: 1
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +31,12 @@
 </head>
 <body>
     <h1>D3 playground</h1>
-    <ul>
-        <li><a href="./hello">hello</a></li>
-        <li><a href="./barchart">bar chart</a></li>
-    </ul>
+
+    {% if contents or file %}
+		{% include '../_includes/nav.html' %}
+	{% else %}
+		{% include nav.html %}
+	{% endif %}
+
 </body>
 </html>
